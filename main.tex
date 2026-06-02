@@ -1,0 +1,70 @@
+\documentclass[12pt, a4paper, oneside]{report}
+
+%% Encoding & fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+%% Page layout
+\usepackage[
+  top=3cm, bottom=3cm,
+  left=3.5cm, right=2.5cm,
+  headheight=15pt
+]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+%% Headers & footers
+\usepackage{fancyhdr}
+
+%% Mathematics
+\usepackage{amsmath, amssymb, amsthm}
+
+%% Figures & tables
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+%% Listings (code)
+\usepackage{listings}
+\usepackage{xcolor}
+
+%% Hyperlinks
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+%% Bibliography (BibLaTeX + biber)
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  sorting=nyt,
+  natbib=true
+]{biblatex}
+\addbibresource{references.bib}
+
+\begin{document}
+
+The tip of a single vector with constant magnitude and a variable angle will trace out a circle.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{single-vector-animation/1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{single-vector-animation/2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{single-vector-animation/3}
+  \end{subfigure}
+  \caption{}
+  \label{fig:single-vector-animation}
+\end{figure}
+
+\end{document}
