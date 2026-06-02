@@ -103,6 +103,69 @@ This manipulation of variables preserves the shape of the curve while discarding
   \label{fig:two-vector-diagram-updated}
 \end{figure}
 
-Each shape is now identified with two parameters, $\rho$ and $f$, which represent the ratio of magnitudes and the ratio of angular frequencies respectively.
+Each shape is now identified with only two parameters, $\rho$ and $f$, which represent the ratio of magnitudes and the ratio of angular frequencies respectively.
+
+When converted to Cartesian coordinates, the vectors become $(\cos\theta, \sin\theta)$ and $(\rho\cos f\theta, \rho\sin f\theta)$.
+The tracing point, $P$, is given by the sum of the two vectors:
+
+\begin{equation}
+(\cos\theta + \rho\cos f\theta, \sin\theta + \rho\sin f\theta).
+\end{equation}
+
+\newpage
+
+In the complex plane, these coordinates can be represented by the complex number:
+\begin{equation*}
+z = x + iy
+\end{equation*}
+
+Substituting:
+\begin{equation*}
+z(\theta) = (\cos\theta + \rho\cos f\theta) + i(\sin\theta + \rho\sin f\theta)
+\end{equation*}
+
+Rearranging:
+
+\begin{equation*}
+z(\theta) = \cos\theta + i\sin\theta + \rho\cos f\theta + i\rho\sin f\theta
+\end{equation*}
+
+Applying Euler's formula:
+\begin{equation}
+z(\theta) = e^{i\theta} + \rho e^{if\theta}
+\end{equation}
+
+A few examples are given below:
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{centered-trochoids-gallery/1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{centered-trochoids-gallery/2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{centered-trochoids-gallery/3}
+  \end{subfigure}
+
+  \vspace{0.5em}
+
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{centered-trochoids-gallery/4}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{centered-trochoids-gallery/5}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{centered-trochoids-gallery/6}
+  \end{subfigure}
+  \caption{\href{https://www.desmos.com/calculator/7msxvmmdxj}{Interactive Desmos graph}}
+  \label{fig:gallery}
+\end{figure}
 
 \end{document}
