@@ -27,7 +27,12 @@
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{subcaption}
+\renewcommand\thesubfigure{}
+\captionsetup[subfigure]{labelformat=empty}
 \usepackage{float}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
 
 %% Listings (code)
 \usepackage{listings}
@@ -45,6 +50,8 @@
   natbib=true
 ]{biblatex}
 \addbibresource{references.bib}
+
+\newcommand{\abs}[1]{\lvert #1 \rvert}
 
 \begin{document}
 
@@ -93,7 +100,7 @@ When a pair of vectors with magnitudes $a$ and $b$ and variable angles $\theta$ 
   \label{fig:two-vector-animation}
 \end{figure}
 
-The shape traced by the vectors is dictated by the ratios of $a$ to $b$ and $\theta$ to $\phi$. We can set $a$ to 1 and $\rho$ to $b/a$ while setting $f$ to $\phi/\theta$ and substituting $\phi$ with $f\theta$.
+The shape traced by the vectors is determined by the ratios of $a$ to $b$ and $\theta$ to $\phi$. We can set $a$ to 1 and $\rho$ to $b/a$ while setting $f$ to $\phi/\theta$ and substituting $\phi$ with $f\theta$.
 This manipulation of variables preserves the shape of the curve while discarding its size and the duration of its construction.
 
 \begin{figure}[H]
@@ -141,31 +148,188 @@ A few examples are given below:
   \centering
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{centered-trochoids-gallery/1}
+    \caption{$\rho = 0.7,\ f = 3$}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{centered-trochoids-gallery/2}
+    \caption{$\rho = 0.9,\ f = -1.6$}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{centered-trochoids-gallery/3}
+    \caption{$\rho = 0.9,\ f = 1.3$}
   \end{subfigure}
 
   \vspace{0.5em}
 
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{centered-trochoids-gallery/4}
+    \caption{$\rho = 10/3,\ f = -0.3$}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{centered-trochoids-gallery/5}
+    \caption{$\rho = -1,\ f = -2.8$}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{centered-trochoids-gallery/6}
+    \caption{$\rho = -0.2,\ f = -2.8$}
   \end{subfigure}
   \caption{\href{https://www.desmos.com/calculator/7msxvmmdxj}{Interactive Desmos graph}}
   \label{fig:gallery}
 \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{>{\centering\arraybackslash}m{2.4cm}@{\hspace{8pt}}|@{\hspace{8pt}}>{\centering\arraybackslash}m{0.25\textwidth}@{\hspace{8pt}}>{\centering\arraybackslash}m{0.25\textwidth}@{\hspace{8pt}}>{\centering\arraybackslash}m{0.25\textwidth}}
+    & $f = -1$ & $f = 0$ & $f = 1$ \\
+    \hline
+    \noalign{\vspace{5pt}}
+    $\rho = -1$ &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=-1,f=-1}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=-1,f=0}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=-1,f=1}.png} \\
+    $-1 < \rho < 0$ &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=-0.5,f=-1}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=-0.5,f=0}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=-0.5,f=1}.png} \\
+    $\rho = 0$ &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=0,f=-1}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=0,f=0}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=0,f=1}.png} \\
+    $0 < \rho < 1$ &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=0.5,f=-1}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=0.5,f=0}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=0.5,f=1}.png} \\
+    $\rho = 1$ &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=1,f=-1}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=1,f=0}.png} &
+      \includegraphics[width=0.25\textwidth]{{centered-trochoids-table/rho=1,f=1}.png} \\
+  \end{tabular}
+  \caption{}
+  \label{fig:trochoid-table}
+\end{figure}
+
+\newpage
+
+A circle can appear in multiple ways. When $\rho = 0$ the system reduces to a single vector and traces a unit circle. When $f = 0$ the second vector is static and $P$ traces a circle with a center at $(\rho, 0)$ and a radius of 1. When $f = 1$ the vectors rotate at the same rate and trace a circle with a center at the origin and a radius of $|\rho + 1|$, the absolute value of the sum of their magnitudes.
+
+A line segment, also known as a tusi couple, appears when $\rho = \pm1$ and $f = -1$. As vectors with similar magnitude and opposite spins rotate, their traced shape collapses into one dimension.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{tusi-couple-animation/1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{tusi-couple-animation/2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{tusi-couple-animation/3}
+  \end{subfigure}
+  \caption{\href{https://github.com/matia128/thesis/blob/master/figures/tusi-couple-animation/tusi-couple-animation.gif}{View animation}}
+  \label{fig:tusi-couple-animation}
+\end{figure}
+
+An ellipse appears when $f = -1$. It has a horizontal semi-axis, $a$, of $|\rho + 1| $ and a vertical semi-axis, $b$, of $|\rho - 1|$. The tusi couple and the circle are special cases of the ellipse.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{ellipse-animation/1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{ellipse-animation/2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{ellipse-animation/3}
+  \end{subfigure}
+  \caption{\href{https://github.com/matia128/thesis/blob/master/figures/ellipse-animation/ellipse-animation.gif}{View animation}}
+  \label{fig:ellipse-animation}
+\end{figure}
+
+Centered trochoids are usually defined as the curve traced by a point which is fixed at a certain distance from the center of a circle. This circle can rotate along the inside of the circumference of another circle, creating a \textbf{hypotrochoid}, or along the ouside, creating an \textbf{epitrochoid}.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hypotrochoid-animation/1.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hypotrochoid-animation/2.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hypotrochoid-animation/3.png}
+  \end{subfigure}
+ \caption{\href{https://upload.wikimedia.org/wikipedia/commons/f/fa/HypotrochoidOutThreeFifths.gif}{Hypotrochoid animation}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{epitrochoid-animation/1.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{epitrochoid-animation/2.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{epitrochoid-animation/3.png}
+  \end{subfigure}
+ \caption{\href{https://upload.wikimedia.org/wikipedia/commons/2/20/EpitrochoidIn3.gif}{Epitrochoid animation}}
+ \vspace{20pt}
+\end{figure}
+
+The following diagrams shows both the rotating circles and the vectors interpretations together:
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hypotrochoid-diagram.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{epitrochoid-diagram.png}
+  \end{subfigure}
+  \hfill
+  \caption{}
+\end{figure}
+
+From these diagrams, it is possible to conclude that when $f$ is negative, (i.e the vectors are spinning in opposite directions) the traced shape is a hypotrochoid (i.e the moving circle spins along the inside); and when $f$ is positive, (i.e. the vectors are spinning in the same direction) the traced shape is an epitrochoid (i.e. the moving circle spins along the outside).
+
+Hypocycloids and epiycloids are special cases of hypotrochoids and epitrochoids, and occur when $|\rho f| = 1$, Which means the second vector's relative size and speed are inverses of each other, (e.g. the second vector is half the size but spins twice as fast as the first vector).
+
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{>{\centering\arraybackslash}m{0.25\textwidth}@{\hspace{8pt}}>{\centering\arraybackslash}m{0.22\textwidth}@{\hspace{8pt}}>{\centering\arraybackslash}m{0.28\textwidth}}
+  \caption{}\label{tab:hypocycloids-epicycloids}\\
+  $\rho = 1/2,\ f = 2$ & \includegraphics[width=0.22\textwidth]{{hypocycloids-and-epicycloids-table/rho=0.5,f=2}.png} & Cardioid \\
+  $\rho = 1/3,\ f = 3$ & \includegraphics[width=0.22\textwidth]{{hypocycloids-and-epicycloids-table/rho=0.333,f=3}.png} & Nephroid \\
+  $\rho = 1/4,\ f = 4$ & \includegraphics[width=0.22\textwidth]{{hypocycloids-and-epicycloids-table/rho=0.25,f=4}.png} & Trifoloid \\
+  $\rho = 1/5,\ f = 5$ & \includegraphics[width=0.22\textwidth]{{hypocycloids-and-epicycloids-table/rho=0.2,f=5}.png} & Quatrefoiloid \\
+  $\rho = -1/2,\ f = -2$ & \includegraphics[width=0.22\textwidth]{{hypocycloids-and-epicycloids-table/rho=-0.5,f=-2}.png} & Deltoid \\
+  $\rho = -1/3,\ f = -3$ & \includegraphics[width=0.22\textwidth]{{hypocycloids-and-epicycloids-table/rho=-0.333,f=-3}.png} & Astroid \\
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+
+After exploring a wide variety of shapes and their parameters, we will now draw general conclusion about $\rho$ and $f$.
+While $\rho$ was first derived from the ratio of magnitudes, it is possible to extened it for negative numbers as well.
 
 \end{document}
