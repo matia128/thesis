@@ -51,8 +51,6 @@
 ]{biblatex}
 \addbibresource{references.bib}
 
-\newcommand{\abs}[1]{\lvert #1 \rvert}
-
 \begin{document}
 
 The tip of a single vector with constant magnitude and a variable angle will trace out a circle.
@@ -140,6 +138,7 @@ z(\theta) = \cos\theta + i\sin\theta + \rho\cos f\theta + i\rho\sin f\theta
 Applying Euler's formula:
 \begin{equation}
 z(\theta) = e^{i\theta} + \rho e^{if\theta}
+\label{eq:two-vec-euler-form}
 \end{equation}
 
 A few examples are given below:
@@ -296,7 +295,7 @@ Centered trochoids are usually defined as the curve traced by a point which is f
  \vspace{20pt}
 \end{figure}
 
-The following diagrams shows both the rotating circles and the vectors interpretations together:
+The following diagrams show both the rotating circles and the vectors interpretations together:
 
 \begin{figure}[H]
   \centering
@@ -313,9 +312,11 @@ The following diagrams shows both the rotating circles and the vectors interpret
   \caption{}
 \end{figure}
 
-From these diagrams, it is possible to conclude that when $f$ is negative, (i.e the vectors are spinning in opposite directions) the traced shape is a hypotrochoid (i.e the moving circle spins along the inside); and when $f$ is positive, (i.e. the vectors are spinning in the same direction) the traced shape is an epitrochoid (i.e. the moving circle spins along the outside).
+From these diagrams, it is possible to conclude that when $f$ is negative, and the vectors are spinning in opposite directions, they will trace a hypotrochoid; and when $f$ is positive, and the vectors are spinning in the same direction, the traced shape is an epitrochoid.
 
-Hypocycloids and epiycloids are special cases of hypotrochoids and epitrochoids, and occur when $|\rho f| = 1$, Which means the second vector's relative size and speed are inverses of each other, (e.g. the second vector is half the size but spins twice as fast as the first vector).
+Hypocycloids and epicycloids are special cases of hypotrochoids and epitrochoids, and occur when $|\rho f| = 1$, Which means the second vector's relative size and speed are inverses of each other, (e.g. the second vector is half the size but spins twice as fast as the first vector).
+
+Hypocycloids and epicycloids have sharp cusps, the number of which is determined by the ratio of angular frequencies, $f$.
 
 \renewcommand{\arraystretch}{2}
 \begin{longtable}{>{\centering\arraybackslash}m{0.25\textwidth}@{\hspace{8pt}}>{\centering\arraybackslash}m{0.22\textwidth}@{\hspace{8pt}}>{\centering\arraybackslash}m{0.28\textwidth}}
@@ -329,7 +330,91 @@ Hypocycloids and epiycloids are special cases of hypotrochoids and epitrochoids,
 \end{longtable}
 \renewcommand{\arraystretch}{1}
 
-After exploring a wide variety of shapes and their parameters, we will now draw general conclusion about $\rho$ and $f$.
-While $\rho$ was first derived from the ratio of magnitudes, it is possible to extened it for negative numbers as well.
+After exploring a wide variety of centered trochoids and their parameters, we will now draw general conclusions about $\rho$ and $f$.
+$\rho$ determines the range $P$ is free to explore. The vectors cannot reach a point which is farther away from the origin than the sum of their magnitudes. Additionaly, they cannot reach a point closer to the origin than the difference of their magnitudes. Therefore, the tracings must be contained within a ring of inner radius $| |\rho| - 1| | $ and outer radius $| |\rho| + 1| |$.
+
+$f$ determines the intricacy of the shape, or the number of rotation each vector completes before the traced shape is complete. If $f$ is expressed as a fully simplified fraction, the number of complete rotation the first vector completes is the denominator, and the number of complete rotations the second vector completes is the numerator. The number of cusps, which refers to the number of points on the shape that are tangent to the outer radius of the ring, is determined by the sum of the numerator and the denominator. For bigger and bigger values of numerators and denominators of $f$, the tracings will fill the ring completely, and $P$ will explore every point within it creating a filled anulus with the dimensions of the ring. Irrational values of $f$ correspond to infinitly large values of numerators and denominators, and exhibit ergodic behavior.
+
+For three vectors, the equation can be obtained by adding another term to equation \eqref{eq:two-vec-euler-form}:
+
+\begin{equation}
+  z(\theta) = e^{i\theta} + \rho_1 e^{f_1\theta} + \rho_2 e^{f_2\theta}
+\end{equation}
+
+For rational frequencies, the shape will close after a finite number of rotations. If at least one of the frequencies is irrational, ergodic behavior occurs. Consider the case where $f_1 = \epsilon$, $f_2 = 2\epsilon$, $\rho_1 = 2$ and $\rho_2 = 1$.
+
+\begin{equation}
+  z(\theta) = e^{i\theta} + 2e^{\epsilon\theta} + e^{2\epsilon\theta}
+\end{equation}
+
+When graphed, the tracings fill a certain area:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum.png}
+\end{figure}
+
+The simulation shows a circle moving across a cardioid track. This can be understood from the equation, which has one term with a $\theta$ coefficient of 1 and two terms with $\theta$ coefficients of $\epsilon$. The first vector spins in infinitely fast compare to the two others, which means that for every orientation of the second two vectors the first can explore any angle. The infinitely small frequency ratio breaks the dependency between $\theta$ and $f\theta$, which is equivalent to substituting $f\theta$ back with $\phi$.
+
+\begin{equation}
+  z(\theta, \phi) = e^{i\theta} + 2e^{i\phi} + e^{2i\phi}
+  \label{eq:rho1=2,rho2=1,f1=epsilon,f2=2*epsilon}
+\end{equation}
+
+This makes clear the divide between the terms: the first one which graphs a circle on its own, and the second and third, which graph a cardioid together. Because the circle and the cardioid's variables are different, every combination of them is possible. Adding every vector in the circle set to every vector in the cardioid set describes the minkowski sum between a circle and a cardioid, which is the shape graphed earlier.
+
+The boundry of this shape can be found by differentiating with respect to both variables, and finding the points which make the derivatives parallel:
+
+\begin{equation*}
+  \frac{\partial z}{\partial \phi} \parallel \frac{\partial z}{\partial \theta}
+\end{equation*}
+
+Which means the derivatives are scaled by a real coefficient, $\gamma$:
+
+\begin{equation*}
+  \frac{\partial z}{\partial \phi} = \gamma \frac{\partial z}{\partial \theta}
+\end{equation*}
+
+Substituting:
+
+\begin{equation*}
+  2ie^{i\phi} + 2ie^{2i\phi} = \gamma (ie^{i\theta})
+\end{equation*}
+
+Rearenging:
+
+\begin{equation*}
+  \frac{\gamma}{2} = e^{i(\phi - \theta)} + e^{i(2\phi - \theta)}
+\end{equation*}
+
+Enforcing $\gamma$'s real value:
+
+\begin{gather*}
+  \sin(\phi - \theta) + \sin(2\phi - \theta) = 0 \\
+  \sin(\phi- \theta) = \sin(\theta - 2\phi)
+\end{gather*}
+\vspace{-\belowdisplayskip}
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+  \setlength{\abovedisplayskip}{0pt}
+  \setlength{\abovedisplayshortskip}{0pt}
+  \begin{align*}
+    \phi - \theta &= \theta - 2\phi \\
+    3\phi &= 2\theta \\
+    \theta &= 1.5\phi
+  \end{align*}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \setlength{\abovedisplayskip}{0pt}
+  \setlength{\abovedisplayshortskip}{0pt}
+  \begin{align*}
+    \phi - \theta &= \pi - \theta + 2\phi \\
+    \theta &= -\pi
+  \end{align*}
+\end{minipage}
+\vspace{20pt}
+
+Plugging back into \eqref{eq:rho1=2,rho2=1,f1=epsilon,f2=2*epsilon}:
 
 \end{document}
