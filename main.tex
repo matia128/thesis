@@ -333,7 +333,28 @@ Hypocycloids and epicycloids have sharp cusps, the number of which is determined
 After exploring a wide variety of centered trochoids and their parameters, we will now draw general conclusions about $\rho$ and $f$.
 $\rho$ determines the range $P$ is free to explore. The vectors cannot reach a point which is farther away from the origin than the sum of their magnitudes. Additionaly, they cannot reach a point closer to the origin than the difference of their magnitudes. Therefore, the tracings must be contained within a ring of inner radius $| |\rho| - 1| | $ and outer radius $| |\rho| + 1| |$.
 
-$f$ determines the intricacy of the shape, or the number of rotation each vector completes before the traced shape is complete. If $f$ is expressed as a fully simplified fraction, the number of complete rotation the first vector completes is the denominator, and the number of complete rotations the second vector completes is the numerator. The number of cusps, which refers to the number of points on the shape that are tangent to the outer radius of the ring, is determined by the sum of the numerator and the denominator. For bigger and bigger values of numerators and denominators of $f$, the tracings will fill the ring completely, and $P$ will explore every point within it creating a filled anulus with the dimensions of the ring. Irrational values of $f$ correspond to infinitly large values of numerators and denominators, and exhibit ergodic behavior.
+$f$ determines the intricacy of the shape, or the number of rotations each vector completes before the traced shape is complete and $P$ repeats itself. If $f$ is expressed as a fully simplified fraction, the number of complete rotation the first vector completes is the denominator, and the number of complete rotations the second vector completes is the numerator. The number of cusps, which refers to the number of points on the shape that are tangent to the outer radius of the ring, is determined by the sum of the numerator and the denominator. For bigger and bigger values of numerators and denominators of $f$, the tracings will fill the ring completely, and $P$ will explore every point within it without repeating, creating a filled anulus with the dimensions of the ring determined by $\rho$. Irrational values of $f$ correspond to infinitly large values of numerators and denominators, and exhibit ergodic behavior.
+
+All irrational values of $f$ will result in the same filled anulus when $\rho$ is constant, but different values will fill this shape in different ways and with different patterns. For simplicity, an infinitesimal, $\epsilon$, can be chosen to represent all irrational values. When approximated with a small number, a frequency ratio of $\epsilon$ fill an anulus in the following manner:
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{two-ergodic-vectors-animation/1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{two-ergodic-vectors-animation/2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{two-ergodic-vectors-animation/3}
+  \end{subfigure}
+  \caption{\href{https://github.com/matia128/thesis/blob/master/figures/two-ergodic-vectors-animation/two-ergodic-vectors-animation.gif}{View animation}}
+  \label{fig:two-ergodic-vectors-animation}
+\end{figure}
+
+The base vector rotates very quickly compared to the second one, completing a circle for every small change in the the second vector's angle. When infinity is approached, every orientation of the second vector can be paired with every orientation of the base vector, creating what is known as a minkowski sum between the circles the vectors fill individually. Graphically, this is seen as a circle being smeared accros another circle.
 
 For three vectors, the equation can be obtained by adding another term to equation \eqref{eq:two-vec-euler-form}:
 
@@ -341,7 +362,10 @@ For three vectors, the equation can be obtained by adding another term to equati
   z(\theta) = e^{i\theta} + \rho_1 e^{f_1\theta} + \rho_2 e^{f_2\theta}
 \end{equation}
 
-For rational frequencies, the shape will close after a finite number of rotations. If at least one of the frequencies is irrational, ergodic behavior occurs. Consider the case where $f_1 = \epsilon$, $f_2 = 2\epsilon$, $\rho_1 = 2$ and $\rho_2 = 1$.
+We can divide the behavior of the three vectors into three cases, depending on the relation between the frequecy values. 
+The first case is obtained by setting all frequencies to a rational value. Note that three irrational but linearly dependent values are also within this case, but since the first vector is set to one the second and third must be linearly dependent, which means they are rational. This case is characterised by a repeating, non-ergodic pattern. The second case is obtained by setting all three vectors to three linearly independent values, such as 1, $\epsilon$ and $\pi$. This case will fill an anulus with dimensions that are determined by the vectors' magnitudes. The third case is defined as the exception to the first and second, or as having three frequency values where at least two are independent, and the third is dependent on either one or both of the two.
+
+Consider the case where $f_1 = \epsilon$, $f_2 = 2\epsilon$, $\rho_1 = 2$ and $\rho_2 = 1$.
 
 \begin{equation}
   z(\theta) = e^{i\theta} + 2e^{\epsilon\theta} + e^{2\epsilon\theta}
@@ -351,17 +375,29 @@ When graphed, the tracings fill a certain area:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum.png}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum-animation/1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum-animation/2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum-animation/3}
+  \end{subfigure}
+  \caption{\href{https://github.com/matia128/thesis/blob/master/figures/circle-and-cardioid-minkowski-sum-animation/circle-and-cardioid-minkowski-sum-animation.gif}{View animation}}
+  \label{fig:circle-and-cardioid-minkowski-sum-animation}
 \end{figure}
 
-The simulation shows a circle moving across a cardioid track. This can be understood from the equation, which has one term with a $\theta$ coefficient of 1 and two terms with $\theta$ coefficients of $\epsilon$. The first vector spins in infinitely fast compare to the two others, which means that for every orientation of the second two vectors the first can explore any angle. The infinitely small frequency ratio breaks the dependency between $\theta$ and $f\theta$, which is equivalent to substituting $f\theta$ back with $\phi$.
+The simulation shows a circle moving across a cardioid track. This can be understood from the equation, which has one term with a $\theta$ coefficient of 1 and two terms with $\theta$ coefficients of $\epsilon$ and 2$\epsilon$. The first vector spins infinitely fast compared to the two others, which means that for every orientation of the second two vectors the first can explore any angle. The infinitely small frequency ratio breaks the dependency between $\theta$ and $f\theta$, which is equivalent to substituting $f\theta$ back with $\phi$.
 
 \begin{equation}
   z(\theta, \phi) = e^{i\theta} + 2e^{i\phi} + e^{2i\phi}
   \label{eq:rho1=2,rho2=1,f1=epsilon,f2=2*epsilon}
 \end{equation}
 
-This makes clear the divide between the terms: the first one which graphs a circle on its own, and the second and third, which graph a cardioid together. Because the circle and the cardioid's variables are different, every combination of them is possible. Adding every vector in the circle set to every vector in the cardioid set describes the minkowski sum between a circle and a cardioid, which is the shape graphed earlier.
+This substitution clearly illustrates the divide between the terms: the first one which graphs a circle on its own, and the second and third, which graph a cardioid together. Because the circle and the cardioid's variables are different, every combination of them is possible. Adding every vector in the circle set to every vector in the cardioid set describes the minkowski sum between a circle and a cardioid, which is the shape graphed earlier.
 
 The boundry of this shape can be found by differentiating with respect to both variables, and finding the points which make the derivatives parallel:
 
@@ -416,5 +452,156 @@ Enforcing $\gamma$'s real value:
 \vspace{20pt}
 
 Plugging back into \eqref{eq:rho1=2,rho2=1,f1=epsilon,f2=2*epsilon}:
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+  \setlength{\abovedisplayskip}{0pt}
+  \setlength{\abovedisplayshortskip}{0pt}
+  \begin{align*}
+    z(\phi) &= e^{1.5i\phi} + 2e^{i\phi} + e^{2i\phi}
+  \end{align*}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \setlength{\abovedisplayskip}{0pt}
+  \setlength{\abovedisplayshortskip}{0pt}
+  \begin{align*}
+    z(\theta) &= e^{i\theta} - 1
+  \end{align*}
+\end{minipage}
+\vspace{20pt}
+
+Graphing:
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum-boundary/1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum-boundary/2}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{circle-and-cardioid-minkowski-sum-boundary/3}
+  \end{subfigure}
+  \caption{}
+  \label{fig:circle-and-cardioid-minkowski-sum-boundary}
+\end{figure}
+
+To generalize the third case, we will set one of the vectors to $\epsilon$ and another to some linear transformation of $\epsilon$, $a\epsilon + b$, resulting in the following equation:
+
+\begin{equation*}
+  z(\theta) = e^{i \theta} + \rho_1 e^{i \epsilon \theta} + \rho_2 e^{i (a \epsilon + b) \theta}
+\end{equation*}
+
+Rewriting $\epsilon \theta$ as an independent angle, $\phi$:
+
+\begin{equation}
+  z(\theta, \phi) = e^{i \theta} + \rho_1 e^{i \phi} + \rho_2 e^{i (a \phi + b \theta)}
+\end{equation}
+
+To find the boundry of this general case we will again compare the derivatives with respect to both angles:
+
+\begin{equation*}
+  \frac{\partial z}{\partial \phi} \parallel \frac{\partial z}{\partial \theta}
+\end{equation*}
+
+This time, this relationship will be enforced by multiplying the conjugate of one of the derivatives with the other derivative, resulting in a real value if the derivatives are parallel:
+
+\begin{gather*}
+  \operatorname{Im}(\frac{\partial z}{\partial \phi} \cdot \overline{\frac{\partial z}{\partial \theta}}) = 0 \\
+  \operatorname{Im}[(i \rho_1 e^{i \phi} + a i \rho_2 e^{a i \phi + b i \theta}) \cdot (\overline{i e^{i \theta} + b i \rho_2 e^{a i \phi + b i \theta}})] = 0 \\
+  \operatorname{Im}[(i \rho_1 e^{i \phi} + a i \rho_2 e^{a i \phi + b i \theta}) \cdot ({i e^{- i \theta} + b i \rho_2 e^{- a i \phi - b i \theta}})] = 0 \\
+  \operatorname{Im}[-\rho_1 e^{i (\phi - \theta)} - b \rho_1 \rho_2 e^{i (\phi - a \phi - b \theta)} - a \rho_2 e^{i(a \phi + b \theta - \theta)} - a b \rho_2 ^ 2] = 0 \\
+  -\rho_1 \sin(\phi - \theta) - b \rho_1 \rho_2 \sin(\phi - a \phi - b \theta) - a \rho_2 \sin(a \phi + b \theta - \theta) = 0 \\
+  \boxed{\rho_1 \sin(\phi - \theta) + a \rho_2 \sin(a \phi + (b - 1) \theta) + b \rho_1 \rho_2 \sin((1 - a) \phi - b \theta) = 0}
+\end{gather*}
+
+The resulting equation is the envalope condition. All points that satisfy this equation are located on the boundry of the shape.
+While a general solution is elusive, a few important insights can be gained by exploring some specific values. One such setup can be $b = 0$, which means the third frequency value is only dpendent on one of the first two frequencies, dividing the terms as so:
+
+\begin{equation}
+  z(\theta, \phi) = e^{i \theta} + \rho_1 e^{i \phi} + \rho_2 e^{a i \phi}
+  \label{eq:b=0}
+\end{equation}
+
+The earlier example fits within this subfamily of the third case, which is characterized by a divide between the first term which graphs a circle alone, and the second and third which graph a centered trochoid together. The resulting shape is a minkowski sum between a circle and a centered trochoid, and the boundry is made up of two curves that are parallel to the centered trochoid and at a distance of 1 and -1 from it.
+The simplified envalope condition becomes:
+
+\begin{gather*}
+  \rho_1 \sin(\phi - \theta) + a \rho_2 \sin(a \phi - \theta) = 0 \\
+  \rho_1 \sin \phi \cos \theta - \rho_1 \sin \theta \cos \phi + a \rho_2 \sin a \theta \cos \phi - a \rho_2 \sin \theta \cos a \phi = 0 \\
+  \rho_1 \sin \phi \cos \theta + a \rho_2 \sin a \theta \cos \phi = \rho_1 \sin \theta \cos \phi + a \rho_2 \sin \theta \cos a \phi \\
+  \cos \theta(\rho_1 \sin \phi + a \rho_2 \sin a \theta) = \sin \theta(\rho_1 \cos \phi + a \rho_2 \cos a \theta) \\
+  \tan \theta = \frac{\rho_1 \sin \phi + a \rho_2 \sin a \theta}{\rho_1 \cos \phi + a \rho_2 \cos a \theta}
+\end{gather*}
+
+Instead of taking the inverse tangent, its relation to the argument of a complex number can be exploited. The complex number, $W = X + iY$ satisfies:
+
+\begin{equation*}
+  \tan (\arg{W}) = \frac{Y}{X}
+\end{equation*}
+
+Substituting:
+
+\begin{gather*}
+  Y = \rho_1 \sin \phi + a \rho_2 \sin a \phi \\
+  X = \rho_1 \cos \phi + a \rho_2 \cos a \phi \\
+  w = X + iY = \rho_1 \cos \phi + a \rho_2 \cos a \phi + \rho_1 i \sin \phi + a \rho_2 i \sin a \phi
+\end{gather*}
+
+The argument of $w$ can be set to $\theta$, but a second solution arises from the tangent function's period of $\pi$:
+
+\begin{equation*}
+  \arg{w} = \theta \quad \text{or} \quad \arg{w} = \theta + \pi
+\end{equation*}
+
+From the parallelism condition, this can be understood as the vectors facing either in the same direction, or in opposite directions.
+
+Rewriting $w$ in euler form:
+
+\begin{gather*}
+  w = \pm \left| w \right| e^{i \theta} = \rho_1 e^{i \phi} + a \rho_2 e^{a i \phi} \\
+  \pm e^{i \theta} = \frac{w}{\left| w \right|} \\
+  e^{i \theta} = \pm \frac{\rho_1 e^{i \phi} + a \rho_2 e^{a i \phi}}{\left| \rho_1 e^{i \phi} + a \rho_2 e^{a i \phi} \right|}
+\end{gather*}
+
+Plugging into \eqref{eq:b=0}:
+
+\begin{equation*}
+  z(\phi) = \pm \frac{\rho_1 e^{i \phi} + a \rho_2 e^{a i \phi}}{\left| \rho_1 e^{i \phi} + a \rho_2 e^{a i \phi} \right|} + \rho_1 e^{i \phi} + \rho_2 e^{a i \phi}
+  \label{eq:boundary-of-b=0}
+\end{equation*}
+
+The result is exactly as predicted, two offset centered trochoids (the second and third terms), with a distance of 1 and -1 from the base center trochoid (handled by the coefficients of the first term).
+
+However, this equation fails to produce appropriate boundries for certain values that breach the domain restrictions imposed by the deriviation.
+
+These critical values can be found as being outside the domain restriction of \eqref{eq:boundary-of-b=0}. Expanding the denominator:
+
+\begin{gather*}
+  \left| \rho_1 e^{i \phi} + a \rho_2 e^{a i \phi} \right| = \\
+  \sqrt{(\rho_1 \cos \phi + a \rho_2 \cos a \phi) ^ 2 + (\rho_1 \sin \phi + a \rho_2 \sin a \phi) ^ 2} = \\
+  \sqrt{\rho_1 ^ 2 \cos ^ 2 \phi + 2 a \rho_1 \rho_2 \cos \phi \cos a \phi + a ^ 2 \rho_2 ^ 2 \cos ^ 2 a \phi + \rho_1 ^ 2 \sin ^ 2 \phi + 2 a \rho_1 \rho_2 \sin \phi \sin a \phi + a ^ 2 \rho_2 ^ 2 \sin ^ 2 a \phi} = \\
+  \sqrt{\rho_1 ^ 2 + 2 a \rho_1 \rho_2 (\cos \phi \cos a \phi + \sin \phi + \sin a \phi) + a ^ 2 \rho_2 ^ 2} = \\
+  \sqrt{\rho_1 ^ 2 + 2 a \rho_1 \rho_2 \cos(\phi(1 - a)) + a ^ 2 \rho_2 ^ 2}
+\end{gather*}
+
+The restricted values:
+
+\begin{gather*}
+  \rho_1 ^ 2 + 2 a \rho_1 \rho_2 \cos(\phi(1 - a)) + a ^ 2 \rho_2 ^ 2 \leqslant 0 \\
+  \cos(\phi(1 - a)) \leqslant \frac{-\rho_1 ^ 2 - a ^ 2 \rho_2 ^ 2}{2 a \rho_1 \rho_2}
+\end{gather*}  
+
+The goal of this deriviation is not to find specific $\phi$ values, but to find parameter values for which there are no possible values for the variables, or parameter values that satisfy this equation regardless of $\phi$. This happens when the right hand side is between -1 and 1, the cosine function's range.
+
+\begin{equation*}
+-1 \leqslant -\rho_1 ^ 2 - a ^ 2 \rho_2 ^ 2 \leqslant 1
+\end{equation*}
+
+
 
 \end{document}
